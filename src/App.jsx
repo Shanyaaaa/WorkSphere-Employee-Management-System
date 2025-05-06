@@ -17,24 +17,21 @@ const App = () => {
   const [loggedInUserData, setloggedInUserData] = useState(null)
   const authData = useContext(AuthContext)
 
+
+  useEffect(() => {
+    localStorage.removeItem("loggedInUser"); // 🔥 Clear session
+  }, []);
+  
   useEffect(()=> {
-    if(authData.user){
-    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+   
+    const loggedInUser = localStorage.getItem("loggedInUser");
       if(loggedInUser) {
-        setUser(loggedInUser.role);
-        if(loggedInUser.user) {
-          setloggedInUserData(loggedInUser.user);
-        }
+        const userData = JSON.parse(loggedInUser)
+        setUser(userData.role)
+        setloggedInUserData(userData.data)
       }
-    }
-  }, [authData]);
-//     if(authData){
-//       const loggedInUser = localStorage.getItem("loggedInUser")
-//       if(loggedInUser){
-//         setUser(loggedInUser.role)
-//       }
-//       }
-// },[authData]);
+    },[])
+
 
 
 
@@ -49,7 +46,7 @@ const App = () => {
     if (employees) {
       setUser('employees')
       setloggedInUserData(employees)
-    localStorage.setItem('loggedInUser',JSON.stringify({role:'employees',user:employees}))
+    localStorage.setItem('loggedInUser',JSON.stringify({role:'employees',user:employees, data:employees}))
     }
   }
     else{

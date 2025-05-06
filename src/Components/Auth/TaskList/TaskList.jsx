@@ -1,34 +1,32 @@
 import React from 'react';
+import AcceptTask from './AcceptTask';
+import NewTask from './NewTask';
+import CompleteTask from './CompleteTask';
+import FailedTask from './FailedTask';
 
-const TaskList = ({data}) => {
+const TaskList = ({ data }) => {
+
   return (
     <div
       id="Tasklist"
       className="h-[55%] overflow-x-auto flex items-center justify-start gap-5 flex-nowrap w-full py-5 mt-10"
     >
-      {/* Card 1 */}
-      <div className="flex-shrink-0 h-full w-[300px] p-5 bg-[#ffd3d3] rounded-xl">
-        <div className="flex justify-between items-center">
-          <h3 className="bg-red-600 text-white text-sm px-3 py-1 rounded">Hello</h3>
-          <h4 className="text-sm">20 FEB 2025</h4>
-        </div>
-        <h2 className="mt-5 text-xl font-semibold">Study for an exam</h2>
-        <p className="text-sm mt-2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit.
-        </p>
-      </div>
+      {data.tasks.map((elem) => {
+        if (elem.active) {
+          return <AcceptTask key={elem.id} data={elem} />;
+        }
+        if (elem.newTask) {
+          return <NewTask key={elem.id} data={elem} />;
+        }
+        if (elem.completed) {
+          return <CompleteTask key={elem.id} data={elem} />;
+        }
+        if (elem.failed) {
+          return <FailedTask key={elem.id} data={elem} />;
+        }
+        return null;
+      })}
 
-      {/* Card 2 */}
-      <div className="flex-shrink-0 h-full w-[300px] p-5 bg-[#ffd3d3] rounded-xl">
-        <div className="flex justify-between items-center">
-          <h3 className="bg-red-600 text-white text-sm px-3 py-1 rounded">Hello</h3>
-          <h4 className="text-sm">20 FEB 2025</h4>
-        </div>
-        <h2 className="mt-5 text-xl font-semibold">Study for an exam</h2>
-        <p className="text-sm mt-2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit.
-        </p>
-      </div>
     </div>
   );
 };

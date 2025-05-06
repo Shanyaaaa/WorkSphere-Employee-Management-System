@@ -6,6 +6,7 @@ export const AuthContext = createContext()
 
 const AuthProvider = ({children}) => {
 
+
     const [UserData, setUserData] = useState({ employees: [], admin: [] })
     
     useEffect(() => {
