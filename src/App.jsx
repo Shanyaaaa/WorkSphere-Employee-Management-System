@@ -6,6 +6,8 @@ import Header from './Components/Auth/other/Header'
 import AdminDashboard from './Dashboard/AdminDashboard'
 import { getLocalStorage, setLocalStorage } from './utils/LocalStorage'
 import { AuthContext } from './context/AuthProvider'
+
+
 const App = () => {
 
   useEffect(() => {
@@ -19,7 +21,7 @@ const App = () => {
 
 
   useEffect(() => {
-    localStorage.removeItem("loggedInUser"); // 🔥 Clear session
+    localStorage.removeItem("loggedInUser");
   }, []);
   
   useEffect(()=> {
@@ -60,9 +62,9 @@ const App = () => {
   {!user ? (
     <Login handleLogin={handleLogin} />
   ) : user === 'admin' ? (
-    <AdminDashboard />
+    <AdminDashboard  changeuUser={setUser}/>
   ) : user === 'employees' ? (
-    <EmployeeDashboard data={loggedInUserData} />
+    <EmployeeDashboard changeUser={setUser} data={loggedInUserData} />
   ) : null}
 
 
