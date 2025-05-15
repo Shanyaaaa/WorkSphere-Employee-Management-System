@@ -1,6 +1,6 @@
 import './App.css'
 import React, { useContext, useEffect, useState } from 'react'
-import Login from './components/Auth/Login'
+import Login from './Components/Auth/Login'
 import EmployeeDashboard from './Dashboard/EmployeeDashboard'
 import Header from './Components/Auth/other/Header'
 import AdminDashboard from './Dashboard/AdminDashboard'
