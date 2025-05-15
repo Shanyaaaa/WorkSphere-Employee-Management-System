@@ -1,6 +1,6 @@
 import React from 'react'
 import TaskListNumbers from '../Components/Auth/other/TaskListNumbers'
-import TaskList from '../Components/Auth/TaskList/TaskLIst'
+import TaskList from '../Components/Auth/TaskList/TaskList'
 import Header from '../Components/Auth/other/Header'
 const EmployeeDashboard = ({data}) => {
   return (
